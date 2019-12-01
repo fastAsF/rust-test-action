@@ -1,17 +1,13 @@
 use math;
 use std::time::Instant;
 
+mod day_01;
+
 fn main() {
     let now = Instant::now();
-
-    let data: Vec<&str> = include_str!("./day-01/data.txt").trim().split_whitespace().collect();
-    let mut sum_of_numbers = 0.0;
-    for x in data.iter() {
-        let number: f64 = x.parse().unwrap();
-        let float_number: f64 = math::round::floor(number / 3.0, 0) - 2.0;
-        sum_of_numbers += float_number;
-    }
-    println!("solution is: {}", sum_of_numbers);
+    let data: Vec<&str> = include_str!("./day_01/data.txt").trim().split_whitespace().collect();
+    let sum_of_numbers: i32 = day_01::day_01_part_01_solve(data.clone());
+    println!("Function solve: {:?}", sum_of_numbers);
 
     let mut vec: Vec<f64> = Vec::new();
     for data_element in data.iter() {
